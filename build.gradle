@@ -17,8 +17,14 @@ dependencies {
     implementation 'net.dv8tion:JDA:5.0.0-alpha.9'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    implementation 'io.github.cdimascio:dotenv-java:2.2.3'
+    implementation("com.google.guava:guava:31.1-jre")
+
 }
 
 test {
     useJUnitPlatform()
 }
+
+
+

@@ -2,6 +2,7 @@ package me.erki.testBot;
 
 
 import me.erki.testBot.Listeners.MessageListener;
+import me.erki.testBot.Utils.ClassUtils;
 import me.erki.testBot.Utils.CommandExecutor;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
@@ -19,14 +20,15 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Locale;
 
+
 public class Main {
 
-    private static String bot_token = "OTY1NjUzMzIyNTE2Mjk1Nzcw.Yl2UvQ.cyw1QoNcqkkX1A7_3nxkgR6D0bM";
+    private static String bot_token = "";
 
-    private static HashMap<String, CommandExecutor> COMMANDS = new HashMap<>();
+    public static HashMap<String, CommandExecutor> COMMANDS = new HashMap<>();
     public static String prefix = "-";
 
-    public static void main(String[] args) throws LoginException {
+    public static void main(String[] args) throws LoginException, IOException {
         JDABuilder builder = JDABuilder.createDefault(bot_token);
 
         builder.setActivity(Activity.watching("Loading..."));
@@ -41,12 +43,25 @@ public class Main {
            }
         });
 
+        ClassUtils.registerAllCommands();
+
+//        for(CommandExecutor commandExecutor : COMMANDS.values()){
+//            if(commandExecutor.alias() != null){
+//                for(String alias : commandExecutor.alias()){
+//                    ALIASES.put()
+//                }
+//            }
+//            }
+//        }
+
         builder.build();
 
 
     }
 
+
     public static void executeCommand(String prefix, MessageReceivedEvent event) throws IOException {
+
         String chatMessage = event.getMessage().getContentRaw();
         String[] splitCommand = chatMessage.split(" ");
         String command = splitCommand[0].replaceFirst("[" + prefix + "]", "");
@@ -59,16 +74,15 @@ public class Main {
                 args = new String[0];
             }
         }
-        System.out.println(command);
-        System.out.println(COMMANDS);
-        if(COMMANDS.get(command.toLowerCase()) != null){
-            System.out.println("???");
-            COMMANDS.get(command.toLowerCase()).execute(args, event);
-            if(!COMMANDS.get(command.toLowerCase()).execute(args, event)){
-                event.getChannel().sendMessage("This command is currently disabled!").queue();
-            }
 
+        if(COMMANDS.get(command.toLowerCase()) != null){
+            System.out.println(COMMANDS);
+            if(!COMMANDS.get(command.toLowerCase()).execute(args, event)){
+                event.getChannel().sendMessage("This command is disabled!").queue();
+            }
         }
+
     }
+
 
 }
