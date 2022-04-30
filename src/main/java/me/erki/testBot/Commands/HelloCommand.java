@@ -8,10 +8,10 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 public class HelloCommand implements CommandExecutor {
     @Override
     public boolean execute(String[] args, MessageReceivedEvent event) {
-        System.out.println("yo?");
+        String user = event.getAuthor().getAsMention();
         MessageChannel channel = event.getChannel();
 
-        channel.sendMessage("Hello there!").queue();
+        channel.sendMessage("Hello " + user + "!").queue();
 
         return true;
     }
