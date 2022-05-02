@@ -43,7 +43,7 @@ public class EightBallCommand implements CommandExecutor {
         System.out.println(ballQuestion);
 
         MessageChannel channel = event.getChannel();
-        if (ballQuestion.isEmpty()) {
+        if (ballQuestion.isBlank()) {
             channel.sendMessage("Please ask a question!").queue();
         } else channel.sendMessage(
                 "Question: " + ballQuestion + "\n" +
