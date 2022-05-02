@@ -36,7 +36,7 @@ public class EightBallCommand implements CommandExecutor {
                 "Very doubtful.",
         };
 
-        Integer ballAnswers = new Random().nextInt(20);
+        int ballAnswers = new Random().nextInt(20);
 
         String ballQuestion = "";
         for (String a : args) {
