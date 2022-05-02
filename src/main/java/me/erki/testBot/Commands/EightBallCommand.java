@@ -2,9 +2,7 @@
 package me.erki.testBot.Commands;
 
 import me.erki.testBot.Utils.CommandExecutor;
-import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.MessageChannel;
-import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 import java.util.Random;
@@ -44,7 +42,9 @@ public class EightBallCommand implements CommandExecutor {
         }
 
         MessageChannel channel = event.getChannel();
-        channel.sendMessage(
+        if (ballQuestion.isBlank()) {
+            channel.sendMessage("Please ask a question!").queue();
+        } else channel.sendMessage(
                 "Question: " + ballQuestion + "\n" +
                 "Answer: " + answers[ballAnswers]
         ).queue();
@@ -53,7 +53,7 @@ public class EightBallCommand implements CommandExecutor {
 
     @Override
     public String name() {
-        return "Magic 8 ball";
+        return "8ball";
     }
 
     @Override
@@ -63,6 +63,6 @@ public class EightBallCommand implements CommandExecutor {
 
     @Override
     public String alias() {
-        return "8ball";
+        return "Magic 8 ball";
     }
 }
