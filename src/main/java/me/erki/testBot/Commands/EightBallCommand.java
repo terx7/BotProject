@@ -53,17 +53,11 @@ public class EightBallCommand implements CommandExecutor {
     }
 
     @Override
-    public String name() {
-        return "8ball";
-    }
+    public String name() { return "8ball"; }
 
     @Override
-    public String description() {
-        return "Provides an answer to all your questions";
-    }
+    public String description() { return "Provides an answer to all your questions"; }
 
     @Override
-    public String alias() {
-        return "Magic 8 ball";
-    }
+    public String alias() { return "Magic 8 ball"; }
 }
