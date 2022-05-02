@@ -1,29 +1,46 @@
 package me.erki.testBot.Commands.admin;
 
 import me.erki.testBot.Utils.CommandExecutor;
-import net.dv8tion.jda.api.entities.Message;
-import net.dv8tion.jda.api.entities.MessageChannel;
-import net.dv8tion.jda.api.entities.User;
+import net.dv8tion.jda.api.entities.*;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
-import net.dv8tion.jda.api.interactions.commands.Command;
 
-
-import java.time.temporal.ChronoUnit;
+import java.util.Arrays;
+import java.util.List;
 
 
 public class BanCommand implements CommandExecutor {
 
     @Override
     public boolean execute(String[] args, MessageReceivedEvent event) {
-            if(args.length==1){ //no argument
+        MessageChannel channel = event.getChannel();
+        boolean isAdmin = event.getMember().getRoles().toString().toLowerCase().contains("admin");
+        boolean isOwner = event.getMember().isOwner();
+        if(isAdmin || isOwner){
+            if(args.length == 0){ //no argument
                 //error message
+                channel.sendMessage("no user given").queue();
+                return true;
+            }else{
+                List<User> banList = event.getMessage().getMentionedUsers();
+                String reason = Arrays.stream(args).toList().get(args.length - 1);
+                boolean test = banList.contains(reason);
+
+                System.out.println(reason);
+                for (User i : banList) {
+                    System.out.println(i.getId());
+                    if(!test){
+                        event.getGuild().ban(i.getId(),0, reason);
+                        channel.sendMessage(i.getAsTag() + " was banned! Reason: " + reason).queue();
+                    }else {
+                        event.getGuild().ban(i.getId(), 0,"ban command");
+                        channel.sendMessage(i.getAsTag() + " was banned! Reason: reason not given");
+                    }
+                        return true;
+                }
+
             }
-//            else if(event.getMentionedMembers().isEmpty()){//no mentioned members, try to use argument as ID
-//                event.getGuild().ban(args[1],0,"ban command").queue();
-//            }else{//mentioned members
-//                event.getGuild().ban(event.getAsMention().get(0),0,"ban command").queue();
-//            }
-        System.out.println(args);
+
+        }
         return true;
         }
 

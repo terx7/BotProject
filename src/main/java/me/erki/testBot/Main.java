@@ -13,6 +13,7 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 import net.dv8tion.jda.api.utils.ChunkingFilter;
 import net.dv8tion.jda.api.utils.MemberCachePolicy;
+import net.dv8tion.jda.api.utils.cache.CacheFlag;
 import org.jetbrains.annotations.NotNull;
 
 import javax.security.auth.login.LoginException;
@@ -29,7 +30,11 @@ public class Main {
     public static String prefix = "-";
 
     public static void main(String[] args) throws LoginException, IOException {
-        JDABuilder builder = JDABuilder.createDefault(bot_token);
+        JDABuilder builder = JDABuilder.createDefault(bot_token,
+                GatewayIntent.GUILD_MEMBERS,
+                GatewayIntent.GUILD_MESSAGES,
+                GatewayIntent.GUILD_VOICE_STATES)
+                .enableCache(CacheFlag.VOICE_STATE);
 
         builder.setActivity(Activity.watching("Loading..."));
         builder.addEventListeners(new MessageListener());
