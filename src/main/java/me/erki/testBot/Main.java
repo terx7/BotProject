@@ -24,7 +24,7 @@ import java.util.Locale;
 
 public class Main {
 
-    private static String bot_token = "";
+    private static String bot_token = Config.get("TOKEN");
 
     public static HashMap<String, CommandExecutor> COMMANDS = new HashMap<>();
     public static String prefix = "-";

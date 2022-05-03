@@ -29,13 +29,13 @@ public class MuteCommand implements CommandExecutor {
                 channel.sendMessage("no user given").queue();
                 return true;
             }else{
-                List<User> muteList = event.getJDA().getUsers();
+                List<Member> muteList = event.getMessage().getMentionedMembers();
 
-                for (User i : muteList) {
+                for (Member i : muteList) {
                     System.out.println(i.getId());
                     {
-                        event.getGuild().timeoutFor((Member) i, muteDuration).queue();
-                        channel.sendMessage(i.getAsTag() + " was muted for" + muteDuration + " minutes!").queue();
+                        event.getGuild().timeoutFor( i, muteDuration).queue();
+                        channel.sendMessage(i.getUser().getAsMention() + " was muted for " + muteDuration.toMinutes() + " minutes!").queue();
                     }
                     return true;
                 }
