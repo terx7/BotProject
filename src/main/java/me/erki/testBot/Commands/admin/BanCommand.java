@@ -1,10 +1,12 @@
 package me.erki.testBot.Commands.admin;
 
 import me.erki.testBot.Utils.CommandExecutor;
+import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.*;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 import java.util.Arrays;
+import java.util.EnumSet;
 import java.util.List;
 
 

@@ -22,6 +22,7 @@ public class PlayCommand implements CommandExecutor {
         final Member self = event.getGuild().getSelfMember();
         final GuildVoiceState selfVoiceState = self.getVoiceState();
 
+
         if (args.length == 0){
             channel.sendMessage("Correct usage is `-play <youtube link>`").queue();
             return true;
@@ -36,7 +37,7 @@ public class PlayCommand implements CommandExecutor {
 //            return true;
 //        }
 
-        if(selfVoiceState.inAudioChannel()){
+        if(selfVoiceState.inAudioChannel() && !memberVoiceState.getChannel().equals(selfVoiceState.getChannel())){
             channel.sendMessage("I'm already in a voice channel.").queue();
             return true;
         }
