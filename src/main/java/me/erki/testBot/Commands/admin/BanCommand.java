@@ -29,11 +29,11 @@ public class BanCommand implements CommandExecutor {
                 for (User i : banList) {
                     System.out.println(i.getId());
                     if(!test){
-                        event.getGuild().ban(i.getId(),0, reason);
+                        event.getGuild().ban(i.getId(),0, reason).queue();
                         channel.sendMessage(i.getAsTag() + " was banned! Reason: " + reason).queue();
                     }else {
-                        event.getGuild().ban(i.getId(), 0,"ban command");
-                        channel.sendMessage(i.getAsTag() + " was banned! Reason: reason not given");
+                        event.getGuild().ban(i.getId(), 0,"ban command").queue();
+                        channel.sendMessage(i.getAsTag() + " was banned! Reason: reason not given").queue();
                     }
                         return true;
                 }
