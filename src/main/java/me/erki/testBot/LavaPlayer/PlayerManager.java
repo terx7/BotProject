@@ -60,17 +60,31 @@ public class PlayerManager {
 
             @Override
             public void playlistLoaded(AudioPlaylist playlist) {
+                System.out.println(playlist.isSearchResult());
                 final List<AudioTrack> tracks = playlist.getTracks();
-                channel.sendMessage("Adding to queue: `")
-                        .append(String.valueOf(tracks.size()))
-                        .append("` tracks form playlist `")
-                        .append(playlist.getName())
-                        .append('`')
-                        .queue();
+                if (!playlist.isSearchResult()) {
+                    channel.sendMessage("Adding to queue: `")
+                            .append(String.valueOf(tracks.size()))
+                            .append("` tracks form playlist `")
+                            .append(playlist.getName())
+                            .append('`')
+                            .queue();
 
-                for (final AudioTrack track : tracks){
+                    for (final AudioTrack track : tracks){
+                        musicManager.scheduler.queue(track);
+                    }
+                }else{
+                    final AudioTrack track = tracks.get(0);
                     musicManager.scheduler.queue(track);
+                    channel.sendMessage("Adding to queue: `")
+                            .append(track.getInfo().title)
+                            .append("` by `")
+                            .append(track.getInfo().author)
+                            .append('`')
+                            .queue();
                 }
+
+
             }
 
             @Override
