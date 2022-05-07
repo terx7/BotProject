@@ -21,19 +21,20 @@ public class CreateRoleCommand implements CommandExecutor {
         EnumSet<Permission> isAdmin2 = event.getMember().getPermissions();
         boolean hasPermission = isAdmin2.contains(Permission.ADMINISTRATOR);
             if (hasPermission || isOwner) {
-//            if(args.length == 0 ) { //no argument
-//                //error message
-//                channel.sendMessage("No arguments given").queue();
-//                return true;
-            event.getGuild().createRole()
-                    .setName("Tolgus")
-                    .setColor(Color.red)
-                    .setHoisted(true)
-                    .setMentionable(false)
+            if(args.length == 0 ) { //no argument
+                //error message
+                channel.sendMessage("No arguments given").queue();
+                return true;
+            } else { event.getGuild().createRole()
+                    .setName(args[0])
+                    .setColor(Color.decode(args[1]))
+                    .setHoisted(Boolean.valueOf(args[2]))
+                    .setMentionable(false);
+                    channel.sendMessage("Created role: " + args[0])
                     .queue(role -> {
                         System.out.println("Created role");
                     });
-
+                }
             }
         return true;
         }

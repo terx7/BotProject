@@ -1,5 +1,5 @@
 
-package me.erki.testBot.Commands;
+package me.erki.testBot.Commands.fun;
 
 import me.erki.testBot.Utils.CommandExecutor;
 import net.dv8tion.jda.api.entities.MessageChannel;
