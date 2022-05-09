@@ -5,16 +5,11 @@ import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.*;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
-import java.time.Duration;
-
-import java.util.Arrays;
 import java.util.EnumSet;
 import java.util.List;
 
-import static java.lang.Integer.parseInt;
 
-
-public class MuteCommand implements CommandExecutor {
+public class UnmuteCommand implements CommandExecutor {
 
     @Override
     public boolean execute(String[] args, MessageReceivedEvent event) {
@@ -23,9 +18,7 @@ public class MuteCommand implements CommandExecutor {
         EnumSet<Permission> isAdmin2 = event.getMember().getPermissions();
         boolean hasPermission = isAdmin2.contains(Permission.KICK_MEMBERS);
 
-        Duration muteDuration = Duration.ofMinutes(parseInt(Arrays.stream(args).toList().get(args.length - 1)));
-
-        if(hasPermission || isOwner){
+        if (hasPermission || isOwner){
             if(args.length == 0){ //no argument
                 //error message
                 channel.sendMessage("no user given").queue();
@@ -36,8 +29,8 @@ public class MuteCommand implements CommandExecutor {
                 for (Member i : muteList) {
                     System.out.println(i.getId());
                     {
-                        event.getGuild().timeoutFor( i, muteDuration).queue();
-                        channel.sendMessage(i.getUser().getAsMention() + " was muted for " + muteDuration.toMinutes() + " minutes!").queue();
+                        event.getGuild().removeTimeout(i).queue();
+                        channel.sendMessage(i.getUser().getAsMention() + " was unmuted!").queue();
                     }
                     return true;
                 }
@@ -50,11 +43,11 @@ public class MuteCommand implements CommandExecutor {
 
 
     @Override
-    public String name() { return "Mute"; }
+    public String name() { return "Unmute"; }
 
     @Override
-    public String description() { return "Times a user out/Mutes a user."; }
+    public String description() { return "Takes a user out of timeout/Unmutes a user."; }
 
     @Override
-    public String alias() { return "Mute"; }
+    public String alias() { return "Unmute"; }
 }

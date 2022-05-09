@@ -15,9 +15,10 @@ public class BanCommand implements CommandExecutor {
     @Override
     public boolean execute(String[] args, MessageReceivedEvent event) {
         MessageChannel channel = event.getChannel();
-        boolean isAdmin = event.getMember().getRoles().toString().toLowerCase().contains("admin");
         boolean isOwner = event.getMember().isOwner();
-        if(isAdmin || isOwner){
+        EnumSet<Permission> isAdmin2 = event.getMember().getPermissions();
+        boolean hasPermission = isAdmin2.contains(Permission.BAN_MEMBERS);
+        if (hasPermission || isOwner){
             if(args.length == 0){ //no argument
                 //error message
                 channel.sendMessage("no user given").queue();
