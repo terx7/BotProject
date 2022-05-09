@@ -5,6 +5,7 @@ import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.*;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
+import java.util.Arrays;
 import java.util.EnumSet;
 import java.util.List;
 
@@ -16,6 +17,7 @@ public class AddRoleCommand implements CommandExecutor {
         boolean isOwner = event.getMember().isOwner();
         EnumSet<Permission> isAdmin2 = event.getMember().getPermissions();
         boolean hasPermission = isAdmin2.contains(Permission.MANAGE_ROLES);
+        String arr = Arrays.toString(args);
         if (hasPermission || isOwner) {
             if (args.length == 0) {
                 //no argument
@@ -23,10 +25,11 @@ public class AddRoleCommand implements CommandExecutor {
                 channel.sendMessage("No arguments given").queue();
                 return true;
             } else {
-                Role role = event.getGuild().getRolesByName("Suspended", false).get(0);
+                List<Role> role = event.getGuild().getRolesByName(Arrays.stream(args).toList().get(args.length - 1), false);
+                System.out.println(role);
                 List<User> mentionedUsers = event.getMessage().getMentionedUsers();
                 for (User mentionedUser : mentionedUsers) {
-                    event.getGuild().addRoleToMember((Member) mentionedUser, role).queue();
+                    event.getGuild().addRoleToMember(mentionedUser.getId(), role.get(0)).queue();
                 }
             }
         }
@@ -35,11 +38,11 @@ public class AddRoleCommand implements CommandExecutor {
 
 
     @Override
-    public String name () { return "CreateRole"; }
+    public String name () { return "addRole"; }
 
     @Override
-    public String description () { return "Creates a role."; }
+    public String description () { return "addrole"; }
 
     @Override
-    public String alias () { return "CreateRole"; }
+    public String alias () { return "addrole"; }
 }
