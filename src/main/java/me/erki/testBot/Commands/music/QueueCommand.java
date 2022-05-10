@@ -9,11 +9,7 @@ import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.requests.restaction.MessageAction;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
-import java.util.concurrent.BlockingQueue;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 public class QueueCommand implements CommandExecutor {
@@ -21,25 +17,13 @@ public class QueueCommand implements CommandExecutor {
     public boolean execute(String[] args, MessageReceivedEvent event) {
         final MessageChannel channel = event.getChannel();
         final GuildMusicManager musicManager = PlayerManager.getInstance().getMusicManager(event.getGuild());
-        BlockingQueue<AudioTrack> queue = musicManager.scheduler.queue;
-
+        Queue<AudioTrack> queue = musicManager.scheduler.queue;
 
         if (queue.isEmpty()) {
             channel.sendMessage("The queue is currently empty").queue();
             return true;
         }
-        System.out.println(queue);
-        if(!Arrays.toString(args).isEmpty() ){
-            if(args[0].equals("shuffle")){
-                Random rd = new Random();
-                for (int i = queue.size() -1; i > 0 ; i--) {
-                int j = rd.nextInt(i+1);
-                String temp = queue.toArray()[i].toString();
-                queue.toArray()[i] = queue.toArray()[j];
-                queue.toArray()[j] = temp;
-                }
-            }
-        }
+
 
         final int trackCount = Math.min(queue.size(), 20);
         final List<AudioTrack> trackList = new ArrayList<>(queue);
