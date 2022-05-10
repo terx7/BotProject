@@ -20,7 +20,7 @@ public class HelpCommand implements CommandExecutor {
             EmbedBuilder help = new EmbedBuilder();
             help.setTitle("Help");
             help.setDescription("Write ``-help (type)`` for information on commands from particular command types.\nFor information on a particular command write ``-help (command)``");
-            help.addField("Types", " :cop: admin - Administration commands \n :soccer: fun - Fun commands \n :headphones: music - Music commands \n :wrench: utility - Utility commands", false);
+            help.addField("Types", ":cop: admin - Administration commands\n:soccer: fun - Fun commands\n:headphones: music - Music commands\n:wrench: utility - Utility commands", false);
             help.setColor(00000);
             event.getChannel().sendMessageEmbeds(help.build()).queue();
 
@@ -29,7 +29,7 @@ public class HelpCommand implements CommandExecutor {
             EmbedBuilder admin = new EmbedBuilder();
             admin.setTitle("Administration commands");
             admin.setDescription("Commands that help you moderate your server.");
-            admin.addField("Commands", " ``ban``\n ``kick``\n ``mute``\n ``unmute``\n ``createrole``\n ``addrole``\n ``removerole``", false);
+            admin.addField("Commands", "``ban``\n``kick``\n``mute``\n``unmute``\n``createrole``\n``addrole``\n``removerole``", false);
             admin.setColor(00000);
             event.getChannel().sendMessageEmbeds(admin.build()).queue();
 
@@ -38,7 +38,7 @@ public class HelpCommand implements CommandExecutor {
             EmbedBuilder fun = new EmbedBuilder();
             fun.setTitle("Fun commands");
             fun.setDescription("Commands for entertainment.");
-            fun.addField("Commands", " ``hello``\n ``roll``\n ``8ball``\n ``avatar``", false);
+            fun.addField("Commands", "``hello``\n``roll``\n``8ball``\n``avatar``", false);
             fun.setColor(00000);
             event.getChannel().sendMessageEmbeds(fun.build()).queue();
 
@@ -47,7 +47,7 @@ public class HelpCommand implements CommandExecutor {
             EmbedBuilder music = new EmbedBuilder();
             music.setTitle("Music commands");
             music.setDescription("Commands for enjoying your favorite music. You must be in the same voice channel as the bot for those to work (the bot automatically joins upon using the play command unless it is already in another voice channel).");
-            music.addField("Commands", " ``play``\n ``nowplaying``\n ``skip``\n ``stop``\n ``queue``", false);
+            music.addField("Commands", "``play``\n``nowplaying``\n``skip``\n``stop``\n``queue``", false);
             music.setColor(00000);
             event.getChannel().sendMessageEmbeds(music.build()).queue();
 
@@ -56,7 +56,7 @@ public class HelpCommand implements CommandExecutor {
             EmbedBuilder utility = new EmbedBuilder();
             utility.setTitle("Utility commands");
             utility.setDescription("Commands that help you with the bot and server.");
-            utility.addField("Commands", " ``help``\n ``info``\n ``nick``\n ``nickremove``\n ``ping``", false);
+            utility.addField("Commands", "``help``\n``info``\n``nick``\n``nickremove``\n``ping``", false);
             utility.setColor(00000);
             event.getChannel().sendMessageEmbeds(utility.build()).queue();
 
