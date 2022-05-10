@@ -38,7 +38,7 @@ public class HelpCommand implements CommandExecutor {
         } else if (args[0] == "music") {
             EmbedBuilder music = new EmbedBuilder();
             music.setTitle("Music commands");
-            music.setDescription("Commands for enjoying your favorite music. You must be in the same voice channel as the bot for those to work (the bot automatically joins upon using the play command unless it is already in another voice channel).")
+            music.setDescription("Commands for enjoying your favorite music. You must be in the same voice channel as the bot for those to work (the bot automatically joins upon using the play command unless it is already in another voice channel).");
             music.addField("Commands", "play - The bot plays your chosen song. (-play URL) \n nowplaying - The bot displays the current song that is playing. (-nowplaying) \n skip - The bot skips the current song. (-skip) \n stop - The bot stops the music and clears the queue. (-stop) \n queue - The bot displays the current queued songs. (-queue)", false);
             music.setColor(00000);
             event.getChannel().sendMessageEmbeds(music.build()).queue();
