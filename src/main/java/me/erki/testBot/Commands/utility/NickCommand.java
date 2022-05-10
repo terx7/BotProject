@@ -26,7 +26,7 @@ public class NickCommand implements CommandExecutor {
                 event.getGuild().getMember(User.fromId(user)).modifyNickname(args[0]);
                 return true;
             } else {
-                String newNick = String.valueOf(event.getMessage()).replace("-queue ", "");
+                String newNick = String.valueOf(event.getMessage()).replace("-nick ", "");
                 event.getGuild().getMember(User.fromId(user)).modifyNickname(newNick);
             }
 
