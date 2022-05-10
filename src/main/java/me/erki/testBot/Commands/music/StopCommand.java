@@ -7,6 +7,7 @@ import net.dv8tion.jda.api.entities.GuildVoiceState;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.api.managers.AudioManager;
 
 @SuppressWarnings("ConstantConditions")
 public class StopCommand implements CommandExecutor {
@@ -26,9 +27,11 @@ public class StopCommand implements CommandExecutor {
         }
 
         final GuildMusicManager musicManager = PlayerManager.getInstance().getMusicManager(event.getGuild());
+        final AudioManager audioManager = event.getGuild().getAudioManager();
 
         musicManager.scheduler.player.stopTrack();
         musicManager.scheduler.queue.clear();
+        audioManager.closeAudioConnection();
 
         channel.sendMessage("The player has been stopped and the queue has been cleared.").queue();
 
