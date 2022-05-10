@@ -36,7 +36,7 @@ public class NickCommand implements CommandExecutor {
     public String name() { return "Nick"; }
 
     @Override
-    public String description() { return "Changes your nickname."; }
+    public String description() { return "Changes your nickname.\nUsage: ``-nick nickname``"; }
 
     @Override
     public String alias() { return "Nick"; }

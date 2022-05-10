@@ -25,7 +25,7 @@ public class PingCommand implements CommandExecutor {
 
     @Override
     public String description() {
-        return "Checks the bots latency";
+        return "Checks the bots latency.\nUsage: ``-ping``";
     }
 
     @Override

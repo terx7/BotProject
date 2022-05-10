@@ -42,7 +42,7 @@ public class StopCommand implements CommandExecutor {
 
     @Override
     public String description() {
-        return "stop";
+        return "Stops the currently playing track and clears the queue.\nUsage: ``-stop``";
     }
 
     @Override

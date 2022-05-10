@@ -26,7 +26,7 @@ public class ShuffleCommand implements CommandExecutor {
 
     @Override
     public String description() {
-        return "shuffle";
+        return "Shuffles the order of currently queued tracks.\nUsage: ``-shuffle``";
     }
 
     @Override

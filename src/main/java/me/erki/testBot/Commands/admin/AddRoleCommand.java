@@ -38,10 +38,10 @@ public class AddRoleCommand implements CommandExecutor {
 
 
     @Override
-    public String name () { return "addRole"; }
+    public String name () { return "addrole"; }
 
     @Override
-    public String description () { return "addrole"; }
+    public String description () { return "Adds a role to the specified user.\nUsage: ``-addrole @user rolename``"; }
 
     @Override
     public String alias () { return "addrole"; }

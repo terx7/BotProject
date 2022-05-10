@@ -19,12 +19,12 @@ public class RollCommand implements CommandExecutor {
 
     @Override
     public String name() {
-        return "Roll";
+        return "roll";
     }
 
     @Override
     public String description() {
-        return "Roll number from 1-100";
+        return "The bot rolls a number from 1-100\nUsage: ``-roll``";
     }
 
     @Override

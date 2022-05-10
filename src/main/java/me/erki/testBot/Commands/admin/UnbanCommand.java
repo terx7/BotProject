@@ -40,10 +40,10 @@ public class UnbanCommand implements CommandExecutor {
 
 
     @Override
-    public String name() { return "Unban"; }
+    public String name() { return "unban"; }
 
     @Override
-    public String description() { return "Unbans a user from the server."; }
+    public String description() { return "Unbans a user from the server.\nUsage: ``-unban userid``"; }
 
     @Override
     public String alias() { return "Unban"; }

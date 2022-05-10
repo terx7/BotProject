@@ -50,10 +50,10 @@ public class MuteCommand implements CommandExecutor {
 
 
     @Override
-    public String name() { return "Mute"; }
+    public String name() { return "mute"; }
 
     @Override
-    public String description() { return "Times a user out/Mutes a user."; }
+    public String description() { return "Times a user out/Mutes a user.\nUsage: ``-mute @user duration(minutes)``"; }
 
     @Override
     public String alias() { return "Mute"; }

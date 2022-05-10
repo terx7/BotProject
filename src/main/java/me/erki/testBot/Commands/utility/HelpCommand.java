@@ -81,7 +81,7 @@ public class HelpCommand implements CommandExecutor {
 
     @Override
     public String description() {
-        return "Displays usable commands";
+        return "Displays commands and info on specific commands.\nUsage: ``-help (type or command)``";
     }
 
     @Override

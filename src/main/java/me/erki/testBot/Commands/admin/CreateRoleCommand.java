@@ -44,7 +44,7 @@ public class CreateRoleCommand implements CommandExecutor {
     public String name () { return "createrole"; }
 
     @Override
-    public String description () { return "Creates a role."; }
+    public String description () { return "Creates a role.\nUsage: ``-createrole rolename color(hexcode) hoisted(true/false)``"; }
 
     @Override
     public String alias () { return "createrole"; }

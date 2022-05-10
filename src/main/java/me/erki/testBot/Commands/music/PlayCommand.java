@@ -72,7 +72,7 @@ public class PlayCommand implements CommandExecutor {
 
     @Override
     public String description() {
-        return "play";
+        return "Plays the YouTube audio linked in the URL.\nUsage: ``-play URL``";
     }
 
     @Override

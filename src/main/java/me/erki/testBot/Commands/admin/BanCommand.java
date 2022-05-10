@@ -49,10 +49,10 @@ public class BanCommand implements CommandExecutor {
 
 
     @Override
-    public String name() { return "Ban"; }
+    public String name() { return "ban"; }
 
     @Override
-    public String description() { return "Bans a user from the server."; }
+    public String description() { return "Bans a user from the server.\nUsage: ``-ban @user reason``"; }
 
     @Override
     public String alias() { return "Ban"; }

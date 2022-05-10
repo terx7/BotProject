@@ -29,7 +29,7 @@ public class NickRemoveCommand implements CommandExecutor {
     public String name() { return "nickremove"; }
 
     @Override
-    public String description() { return "Removes your nickname."; }
+    public String description() { return "Removes your nickname.\nUsage: ``-removenick``"; }
 
     @Override
     public String alias() { return "nickremove"; }

@@ -27,7 +27,7 @@ public class InfoCommand implements CommandExecutor {
 
     @Override
     public String description() {
-        return "info panel";
+        return "Displays bot info.\nUsage: ``-info``";
     }
 
     @Override

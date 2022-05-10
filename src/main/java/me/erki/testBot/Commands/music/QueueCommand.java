@@ -71,7 +71,7 @@ public class QueueCommand implements CommandExecutor {
 
     @Override
     public String description() {
-        return "shows all the tracks currently in queue";
+        return "Shows all the tracks currently in queue.\nUsage: ``-queue``";
     }
 
     @Override

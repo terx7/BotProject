@@ -51,7 +51,7 @@ public class NowPlayingCommand implements CommandExecutor {
 
     @Override
     public String description() {
-        return "Shows the currently playing track.";
+        return "Shows the currently playing track.\nUsage: ``-nowplaying``";
     }
 
     @Override

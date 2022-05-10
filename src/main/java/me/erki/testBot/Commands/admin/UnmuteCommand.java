@@ -46,7 +46,7 @@ public class UnmuteCommand implements CommandExecutor {
     public String name() { return "Unmute"; }
 
     @Override
-    public String description() { return "Takes a user out of timeout/Unmutes a user."; }
+    public String description() { return "Takes a user out of timeout/Unmutes a user.\nUsage: ``-unmute @user``"; }
 
     @Override
     public String alias() { return "Unmute"; }

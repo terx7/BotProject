@@ -41,7 +41,7 @@ public class RemoveRoleCommand implements CommandExecutor {
     public String name () { return "removerole"; }
 
     @Override
-    public String description () { return "Remove a role from a user"; }
+    public String description () { return "Removes a role from the specified user.\nUsage: ``-removerole @user rolename``"; }
 
     @Override
     public String alias () { return "removerole"; }

@@ -31,12 +31,12 @@ public class AvatarCommand implements CommandExecutor {
 
     @Override
     public String name() {
-        return "Avatar";
+        return "avatar";
     }
 
     @Override
     public String description() {
-        return "Get avatar of mentioned user";
+        return "Gets higher res avatar of mentioned user or self.\nUsage: ``-avatar (@user)``";
     }
 
     @Override

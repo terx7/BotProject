@@ -43,10 +43,10 @@ public class KickCommand implements CommandExecutor {
 
 
     @Override
-    public String name() { return "Kick"; }
+    public String name() { return "kick"; }
 
     @Override
-    public String description() { return "Kicks a user from the server."; }
+    public String description() { return "Kicks a user from the server.\nUsage: ``-kick @user``"; }
 
     @Override
     public String alias() { return "Kick"; }
