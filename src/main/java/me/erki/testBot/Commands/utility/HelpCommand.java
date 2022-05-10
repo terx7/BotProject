@@ -23,7 +23,7 @@ public class HelpCommand implements CommandExecutor {
             EmbedBuilder admin = new EmbedBuilder();
             admin.setTitle("Administration commands");
             admin.setDescription("Commands that help you moderate your server.");
-            admin.addField("Commands", " ban - Bans the chosen member. (-ban @user reason) \n kick - Kicks the chosen member. (-kick @user) \n mute - Mutes/Times out the chosen member. (-mute @user duration[minutes]) \n unmute - Unmutes/Untimes out the chosen member. (-unmute @user) \n createrole - Creates a role in your server. (-createrole rolename color[hex] hoisted[true or false]) \n addrole - Adds a role to a chosen member. (-addrole @user rolename) \n removerole - Removes a role from a chosen member. (-removerole @user rolename)", false);
+            admin.addField("Commands", " ``ban`` Bans the chosen member. ``-ban @user reason`` \n ``kick`` Kicks the chosen member. ``-kick @user`` \n ``mute`` Mutes/Times out the chosen member. ``-mute @user duration(minutes)`` \n ``unmute`` Unmutes/Untimes out the chosen member. ``-unmute @user`` \n ``createrole`` Creates a role in your server. ``-createrole rolename color[hex] hoisted[true or false]`` \n ``addrole`` Adds a role to a chosen member. ``-addrole @user rolename`` \n ``removerole`` Removes a role from a chosen member. ``-removerole @user rolename``", false);
             admin.setColor(00000);
             event.getChannel().sendMessageEmbeds(admin.build()).queue();
 
