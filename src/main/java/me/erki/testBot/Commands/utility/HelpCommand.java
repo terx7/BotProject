@@ -1,19 +1,25 @@
 package me.erki.testBot.Commands.utility;
 
+import me.erki.testBot.Main;
 import me.erki.testBot.Utils.CommandExecutor;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
+import java.util.HashMap;
 import java.util.Objects;
 
 public class HelpCommand implements CommandExecutor {
 
     @Override
     public boolean execute(String[] args, MessageReceivedEvent event) {
+
+        HashMap<String, CommandExecutor> commands = Main.COMMANDS;
+        System.out.println(commands.keySet());
+
         if (args.length == 0) {
             EmbedBuilder help = new EmbedBuilder();
             help.setTitle("Help");
-            help.setDescription("Write -help (type) for information on commands from particular command types.");
+            help.setDescription("Write ``-help (type)`` for information on commands from particular command types.\nFor information on a particular command write ``-help (command)``");
             help.addField("Types", " :cop: admin - Administration commands \n :soccer: fun - Fun commands \n :headphones: music - Music commands \n :wrench: utility - Utility commands", false);
             help.setColor(00000);
             event.getChannel().sendMessageEmbeds(help.build()).queue();
@@ -55,6 +61,15 @@ public class HelpCommand implements CommandExecutor {
             event.getChannel().sendMessageEmbeds(utility.build()).queue();
 
             utility.clear();
+        }else if (commands.containsKey(args[0])){
+            System.out.println(commands.get(args[0]));
+            EmbedBuilder embed = new EmbedBuilder();
+            embed.setTitle(commands.get(args[0]).name() + " usages");
+            embed.setDescription(commands.get(args[0]).description());
+            embed.setColor(00000);
+            event.getChannel().sendMessageEmbeds(embed.build()).queue();
+
+            embed.clear();
         }
         return true;
     }
