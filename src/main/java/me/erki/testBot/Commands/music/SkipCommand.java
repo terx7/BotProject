@@ -46,7 +46,7 @@ public class SkipCommand implements CommandExecutor {
 
     @Override
     public String description() {
-        return "skip";
+        return "Skips the currently playing track.\nUsage: ``-skip``";
     }
 
     @Override

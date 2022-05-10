@@ -9,8 +9,7 @@ import java.util.EnumSet;
 import java.util.List;
 
 
-@SuppressWarnings("ConstantConditions")
-public class KickCommand implements CommandExecutor {
+public class UnmuteCommand implements CommandExecutor {
 
     @Override
     public boolean execute(String[] args, MessageReceivedEvent event) {
@@ -18,19 +17,20 @@ public class KickCommand implements CommandExecutor {
         boolean isOwner = event.getMember().isOwner();
         EnumSet<Permission> isAdmin2 = event.getMember().getPermissions();
         boolean hasPermission = isAdmin2.contains(Permission.KICK_MEMBERS);
-        if(hasPermission || isOwner){
+
+        if (hasPermission || isOwner){
             if(args.length == 0){ //no argument
                 //error message
                 channel.sendMessage("no user given").queue();
                 return true;
             }else{
-                List<User> kickList = event.getMessage().getMentionedUsers();
+                List<Member> muteList = event.getMessage().getMentionedMembers();
 
-                for (User i : kickList) {
+                for (Member i : muteList) {
                     System.out.println(i.getId());
                     {
-                        event.getGuild().kick(i.getId()).queue();
-                        channel.sendMessage(i.getAsTag() + " was kicked!").queue();
+                        event.getGuild().removeTimeout(i).queue();
+                        channel.sendMessage(i.getUser().getAsMention() + " was unmuted!").queue();
                     }
                     return true;
                 }
@@ -43,11 +43,11 @@ public class KickCommand implements CommandExecutor {
 
 
     @Override
-    public String name() { return "kick"; }
+    public String name() { return "Unmute"; }
 
     @Override
-    public String description() { return "Kicks a user from the server.\nUsage: ``-kick @user``"; }
+    public String description() { return "Takes a user out of timeout/Unmutes a user.\nUsage: ``-unmute @user``"; }
 
     @Override
-    public String alias() { return "Kick"; }
+    public String alias() { return "Unmute"; }
 }

@@ -60,7 +60,6 @@ public class PlayerManager {
 
             @Override
             public void playlistLoaded(AudioPlaylist playlist) {
-                System.out.println(playlist.isSearchResult());
                 final List<AudioTrack> tracks = playlist.getTracks();
                 if (!playlist.isSearchResult()) {
                     channel.sendMessage("Adding to queue: `")

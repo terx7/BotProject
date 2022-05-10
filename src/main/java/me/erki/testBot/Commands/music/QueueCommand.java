@@ -9,9 +9,7 @@ import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.requests.restaction.MessageAction;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.BlockingQueue;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 public class QueueCommand implements CommandExecutor {
@@ -19,13 +17,13 @@ public class QueueCommand implements CommandExecutor {
     public boolean execute(String[] args, MessageReceivedEvent event) {
         final MessageChannel channel = event.getChannel();
         final GuildMusicManager musicManager = PlayerManager.getInstance().getMusicManager(event.getGuild());
-        final BlockingQueue<AudioTrack> queue = musicManager.scheduler.queue;
-
+        Queue<AudioTrack> queue = musicManager.scheduler.queue;
 
         if (queue.isEmpty()) {
             channel.sendMessage("The queue is currently empty").queue();
             return true;
         }
+
 
         final int trackCount = Math.min(queue.size(), 20);
         final List<AudioTrack> trackList = new ArrayList<>(queue);
@@ -73,7 +71,7 @@ public class QueueCommand implements CommandExecutor {
 
     @Override
     public String description() {
-        return "shows all the tracks currently in queue";
+        return "Shows all the tracks currently in queue.\nUsage: ``-queue``";
     }
 
     @Override

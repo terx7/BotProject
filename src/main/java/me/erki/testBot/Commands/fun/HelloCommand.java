@@ -23,7 +23,7 @@ public class HelloCommand implements CommandExecutor {
 
     @Override
     public String description() {
-        return "Hello command";
+        return "The bot greets you.\nUsage: ``-hello``";
     }
 
     @Override

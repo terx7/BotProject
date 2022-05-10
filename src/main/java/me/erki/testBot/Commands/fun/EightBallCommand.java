@@ -56,7 +56,7 @@ public class EightBallCommand implements CommandExecutor {
     public String name() { return "8ball"; }
 
     @Override
-    public String description() { return "Provides an answer to all your questions"; }
+    public String description() { return "Provides an answer to all your questions.\nUsage: ``-8ball question``"; }
 
     @Override
     public String alias() { return "Magic 8 ball"; }
