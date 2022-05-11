@@ -23,15 +23,13 @@ public class UnbanCommand implements CommandExecutor {
                 channel.sendMessage("no user given").queue();
                 return true;
             }else{
-                List<User> unbanList = event.getMessage().getMentionedUsers();
-
-                for (User i : unbanList) {
-                    System.out.println(i.getId());
-                    event.getGuild().unban(i.getId()).queue();
-                    channel.sendMessage(i.getAsTag() + " was unbanned!").queue();
-                    return true;
+                String member = args[0];
+                try{
+                    event.getGuild().unban(member).queue();
+                    channel.sendMessage("User was successfully unbanned").queue();
+                }catch (Exception e){
+                    channel.sendMessage("Something went wrong.").queue();
                 }
-
             }
 
         }
