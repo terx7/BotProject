@@ -29,7 +29,7 @@ public class HelpCommand implements CommandExecutor {
             EmbedBuilder admin = new EmbedBuilder();
             admin.setTitle("Administration commands");
             admin.setDescription("Commands that help you moderate your server.");
-            admin.addField("Commands", "``ban``\n``kick``\n``mute``\n``unmute``\n``createrole``\n``addrole``\n``removerole``", false);
+            admin.addField("Commands", "``ban``\n``unban``\n``kick``\n``mute``\n``unmute``\n``createrole``\n``addrole``\n``removerole``", false);
             admin.setColor(00000);
             event.getChannel().sendMessageEmbeds(admin.build()).queue();
 
@@ -47,7 +47,7 @@ public class HelpCommand implements CommandExecutor {
             EmbedBuilder music = new EmbedBuilder();
             music.setTitle("Music commands");
             music.setDescription("Commands for enjoying your favorite music. You must be in the same voice channel as the bot for those to work (the bot automatically joins upon using the play command unless it is already in another voice channel).");
-            music.addField("Commands", "``play``\n``nowplaying``\n``skip``\n``stop``\n``queue``", false);
+            music.addField("Commands", "``play``\n``nowplaying``\n``skip``\n``stop``\n``repeat``\n``queue``", false);
             music.setColor(00000);
             event.getChannel().sendMessageEmbeds(music.build()).queue();
 

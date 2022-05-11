@@ -41,7 +41,7 @@ public class RepeatCommand implements CommandExecutor {
 
     @Override
     public String description() {
-        return "repeat";
+        return "Repeats the currently playing song after it ends.\nThe same command can be used to stop repeating.\nUsage: ``-repeat``";
     }
 
     @Override
