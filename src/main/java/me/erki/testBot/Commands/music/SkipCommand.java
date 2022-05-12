@@ -1,6 +1,8 @@
 package me.erki.testBot.Commands.music;
 
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
+import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
+import com.sedmelluq.discord.lavaplayer.track.AudioTrackInfo;
 import me.erki.testBot.LavaPlayer.GuildMusicManager;
 import me.erki.testBot.LavaPlayer.PlayerManager;
 import me.erki.testBot.Utils.CommandExecutor;
@@ -34,7 +36,13 @@ public class SkipCommand implements CommandExecutor {
             return true;
         }
 
+
+
         musicManager.scheduler.nextTrack();
+        final AudioTrack track = audioPlayer.getPlayingTrack();
+        final AudioTrackInfo info = track.getInfo();
+        channel.sendMessageFormat("Skipping to `%s` by `%s` (Link: <%s>)", info.title, info.author, info.uri).queue();
+
 
         return true;
     }

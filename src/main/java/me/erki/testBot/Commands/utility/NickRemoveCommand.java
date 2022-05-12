@@ -8,6 +8,7 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import java.util.EnumSet;
 
 
+@SuppressWarnings("ConstantConditions")
 public class NickRemoveCommand implements CommandExecutor {
 
     @Override
@@ -20,6 +21,7 @@ public class NickRemoveCommand implements CommandExecutor {
             Member user = event.getMember();
                 //error message
                 user.modifyNickname("").queue();
+                channel.sendMessage("Nickname was successfully removed.").queue();
                 return true;
         }
         return true;

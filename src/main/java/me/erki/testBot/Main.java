@@ -34,7 +34,8 @@ public class Main {
                 GatewayIntent.GUILD_MEMBERS,
                 GatewayIntent.GUILD_MESSAGES,
                 GatewayIntent.GUILD_VOICE_STATES)
-                .enableCache(CacheFlag.VOICE_STATE);
+                .enableCache(CacheFlag.VOICE_STATE)
+                .enableCache(CacheFlag.MEMBER_OVERRIDES);
 
         builder.setActivity(Activity.watching("Loading..."));
         builder.addEventListeners(new MessageListener());

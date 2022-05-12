@@ -29,7 +29,7 @@ public class CreateRoleCommand implements CommandExecutor {
                     .setName(args[0])
                     .setColor(Color.decode(args[1]))
                     .setHoisted(Boolean.valueOf(args[2]))
-                    .setMentionable(false);
+                    .setMentionable(false).queue();
                     channel.sendMessage("Created role: " + args[0])
                     .queue(role -> {
                         System.out.println("Created role");

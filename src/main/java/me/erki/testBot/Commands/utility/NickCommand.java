@@ -8,6 +8,7 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import java.util.EnumSet;
 
 
+@SuppressWarnings("ConstantConditions")
 public class NickCommand implements CommandExecutor {
 
     @Override
@@ -26,6 +27,7 @@ public class NickCommand implements CommandExecutor {
                 String newNick = event.getMessage().getContentRaw().replace("-nick ", "");
                 System.out.println(newNick);
                 user.modifyNickname(newNick).queue();
+                channel.sendMessage("Nickname was successfully changed.").queue();
             }
 
         }
