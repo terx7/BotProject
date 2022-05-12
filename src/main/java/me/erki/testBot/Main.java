@@ -51,15 +51,6 @@ public class Main {
 
         ClassUtils.registerAllCommands();
 
-//        for(CommandExecutor commandExecutor : COMMANDS.values()){
-//            if(commandExecutor.alias() != null){
-//                for(String alias : commandExecutor.alias()){
-//                    ALIASES.put()
-//                }
-//            }
-//            }
-//        }
-
         builder.build();
 
 
