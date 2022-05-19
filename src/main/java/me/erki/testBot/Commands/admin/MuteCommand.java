@@ -26,15 +26,13 @@ public class MuteCommand implements CommandExecutor {
         Duration muteDuration = Duration.ofMinutes(parseInt(Arrays.stream(args).toList().get(args.length - 1)));
 
         if(hasPermission || isOwner){
-            if(args.length == 0){ //no argument
-                //error message
+            if(args.length == 0){
                 channel.sendMessage("no user given").queue();
                 return true;
             }else{
                 List<Member> muteList = event.getMessage().getMentionedMembers();
 
                 for (Member i : muteList) {
-                    System.out.println(i.getId());
                     {
                         event.getGuild().timeoutFor( i, muteDuration).queue();
                         channel.sendMessage(i.getUser().getAsMention() + " was muted for " + muteDuration.toMinutes() + " minutes!").queue();

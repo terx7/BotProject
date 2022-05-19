@@ -32,11 +32,6 @@ public class PlayCommand implements CommandExecutor {
         final GuildVoiceState memberVoiceState = member.getVoiceState();
 
 
-//        if (!memberVoiceState.getChannel().equals(selfVoiceState.getChannel())) {
-//            channel.sendMessage("You need to be in the same voice channel as me for this to work").queue();
-//            return true;
-//        }
-
         if(selfVoiceState.inAudioChannel() && !memberVoiceState.getChannel().equals(selfVoiceState.getChannel())){
             channel.sendMessage("I'm already in a voice channel.").queue();
             return true;

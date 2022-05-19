@@ -41,13 +41,13 @@ public class QueueCommand implements CommandExecutor {
                     .append(info.author)
                     .append("` [`")
                     .append(formatTime(track.getDuration()))
-                    .append("`]\n");
+                    .append("`]\n").queue();
         }
 
         if (trackList.size() > trackCount) {
             messageAction.append("And `")
                     .append(String.valueOf(trackList.size() - trackCount))
-                    .append("` more...");
+                    .append("` more...").queue();
         }
 
         messageAction.queue();

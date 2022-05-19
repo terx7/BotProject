@@ -20,8 +20,6 @@ public class AddRoleCommand implements CommandExecutor {
         String arr = Arrays.toString(args);
         if (hasPermission || isOwner) {
             if (args.length == 0) {
-                //no argument
-                //error message
                 channel.sendMessage("No arguments given").queue();
                 return true;
             } else {

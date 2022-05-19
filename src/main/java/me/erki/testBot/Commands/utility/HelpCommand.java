@@ -14,7 +14,6 @@ public class HelpCommand implements CommandExecutor {
     public boolean execute(String[] args, MessageReceivedEvent event) {
 
         HashMap<String, CommandExecutor> commands = Main.COMMANDS;
-        System.out.println(commands.keySet());
 
         if (args.length == 0) {
             EmbedBuilder help = new EmbedBuilder();
@@ -47,7 +46,7 @@ public class HelpCommand implements CommandExecutor {
             EmbedBuilder music = new EmbedBuilder();
             music.setTitle("Music commands");
             music.setDescription("Commands for enjoying your favorite music. You must be in the same voice channel as the bot for those to work (the bot automatically joins upon using the play command unless it is already in another voice channel).");
-            music.addField("Commands", "``play``\n``nowplaying``\n``skip``\n``stop``\n``repeat``\n``queue``", false);
+            music.addField("Commands", "``play``\n``nowplaying``\n``skip``\n``stop``\n``repeat``\n``queue``\n``shuffle``", false);
             music.setColor(00000);
             event.getChannel().sendMessageEmbeds(music.build()).queue();
 

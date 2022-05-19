@@ -40,7 +40,6 @@ public class EightBallCommand implements CommandExecutor {
         for (String a : args) {
             ballQuestion += a + " ";
         }
-        System.out.println(ballQuestion);
 
         MessageChannel channel = event.getChannel();
         if (ballQuestion.isBlank()) {

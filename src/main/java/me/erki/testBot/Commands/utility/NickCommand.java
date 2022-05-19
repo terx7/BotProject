@@ -19,8 +19,7 @@ public class NickCommand implements CommandExecutor {
 
         if(hasPermission){
             Member user = event.getMember();
-            if(args.length == 0) { //no argument
-                //error message
+            if(args.length == 0) {
                 channel.sendMessage("no nickname change given").queue();
                 return true;
             } else {

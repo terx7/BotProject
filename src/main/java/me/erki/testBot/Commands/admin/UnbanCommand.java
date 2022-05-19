@@ -18,8 +18,7 @@ public class UnbanCommand implements CommandExecutor {
         EnumSet<Permission> isAdmin2 = event.getMember().getPermissions();
         boolean hasPermission = isAdmin2.contains(Permission.BAN_MEMBERS);
         if (hasPermission || isOwner){
-            if(args.length == 0){ //no argument
-                //error message
+            if(args.length == 0){
                 channel.sendMessage("no user given").queue();
                 return true;
             }else{

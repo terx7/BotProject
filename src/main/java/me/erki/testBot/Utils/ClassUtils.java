@@ -15,8 +15,7 @@ public class ClassUtils {
             try {
                 Class c = Class.forName(classInfo.getName());
                 Object obj = c.getDeclaredConstructor().newInstance();
-                if(obj instanceof CommandExecutor){
-                    CommandExecutor commandExecutor = (CommandExecutor) obj;
+                if(obj instanceof CommandExecutor commandExecutor){
                     Main.COMMANDS.put(commandExecutor.name().toLowerCase(), commandExecutor);
                 }
             } catch (ClassNotFoundException | InvocationTargetException | InstantiationException | IllegalAccessException | NoSuchMethodException e) {

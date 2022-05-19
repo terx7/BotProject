@@ -21,8 +21,7 @@ public class CreateRoleCommand implements CommandExecutor {
         EnumSet<Permission> isAdmin2 = event.getMember().getPermissions();
         boolean hasPermission = isAdmin2.contains(Permission.ADMINISTRATOR);
             if (hasPermission || isOwner) {
-            if(args.length == 0 ) { //no argument
-                //error message
+            if(args.length == 0 ) {
                 channel.sendMessage("No arguments given").queue();
                 return true;
             } else { event.getGuild().createRole()
@@ -31,9 +30,7 @@ public class CreateRoleCommand implements CommandExecutor {
                     .setHoisted(Boolean.valueOf(args[2]))
                     .setMentionable(false).queue();
                     channel.sendMessage("Created role: " + args[0])
-                    .queue(role -> {
-                        System.out.println("Created role");
-                    });
+                    .queue();
                 }
             }
         return true;

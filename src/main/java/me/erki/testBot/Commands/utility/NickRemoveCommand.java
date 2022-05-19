@@ -19,10 +19,11 @@ public class NickRemoveCommand implements CommandExecutor {
 
         if(hasPermission){
             Member user = event.getMember();
-                //error message
-                user.modifyNickname("").queue();
-                channel.sendMessage("Nickname was successfully removed.").queue();
-                return true;
+
+            user.modifyNickname("").queue();
+            channel.sendMessage("Nickname was successfully removed.").queue();
+
+            return true;
         }
         return true;
     }

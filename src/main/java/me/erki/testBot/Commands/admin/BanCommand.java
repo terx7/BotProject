@@ -32,13 +32,9 @@ public class BanCommand implements CommandExecutor {
                 String target = Arrays.stream(args).toList().get(0);
                 String reason = event.getMessage().getContentRaw().replace("-ban " + target, "");
 
-                System.out.println(target + " " + reason);
-
                 boolean containsReason = banList.contains(reason);
 
-                System.out.println(reason);
                 for (User i : banList) {
-                    System.out.println(i.getId());
                     if(!containsReason){
                         event.getGuild().ban(i.getId(),0, reason).queue();
                         channel.sendMessage(i.getAsTag() + " was banned! Reason: " + reason).queue();

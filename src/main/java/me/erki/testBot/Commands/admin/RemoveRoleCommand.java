@@ -20,13 +20,10 @@ public class RemoveRoleCommand implements CommandExecutor {
         String arr = Arrays.toString(args);
         if (hasPermission || isOwner) {
             if (args.length == 0) {
-                //no argument
-                //error message
                 channel.sendMessage("No arguments given").queue();
                 return true;
             } else {
                 List<Role> role = event.getGuild().getRolesByName(Arrays.stream(args).toList().get(args.length - 1), false);
-                System.out.println(role);
                 List<User> mentionedUsers = event.getMessage().getMentionedUsers();
                 for (User mentionedUser : mentionedUsers) {
                     event.getGuild().removeRoleFromMember(mentionedUser.getId(), role.get(0)).queue();

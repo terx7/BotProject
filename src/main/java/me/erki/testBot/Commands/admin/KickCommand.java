@@ -27,7 +27,6 @@ public class KickCommand implements CommandExecutor {
                 List<User> kickList = event.getMessage().getMentionedUsers();
 
                 for (User i : kickList) {
-                    System.out.println(i.getId());
                     {
                         event.getGuild().kick(i.getId()).queue();
                         channel.sendMessage(i.getAsTag() + " was kicked!").queue();
